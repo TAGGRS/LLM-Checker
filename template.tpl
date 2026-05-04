@@ -1,3 +1,11 @@
+___TERMS_OF_SERVICE___
+
+By creating or modifying this file you agree to Google Tag Manager's Community
+Template Gallery Developer Terms of Service available at
+https://developers.google.com/tag-manager/gallery-tos (or such other URL as
+Google may provide), as modified from time to time.
+
+
 ___INFO___
 
 {
@@ -6,28 +14,18 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "LLM Checker - TAGGRS",
-  "description": "Get visibility into traffic potentially originating from Large Language Models (LLMs) such as ChatGPT, Google Gemini, Perplexity AI, Microsoft Copilot, and Claude.",
+  "categories": ["ANALYTICS", "UTILITY", "DATA_WAREHOUSING", "EXPERIMENTATION"],
+  "description": "Get visibility into traffic potentially originating from Large Language Models (LLMs) such as ChatGPT, Google Gemini, Perplexity AI, Microsoft Copilot, and Claude. This Google Tag Manager template hel",
   "containerContexts": [
     "SERVER"
   ]
 }
 
-___TEMPLATE_METADATA___
-
-{
-  "metadataVersion": 1,
-  "termsOfService": true,
-  "categories": [
-    "ANALYTICS",
-    "UTILITY",
-    "DATA_WAREHOUSING",
-    "EXPERIMENTATION"
-  ]
-}
 
 ___TEMPLATE_PARAMETERS___
 
 []
+
 
 ___SANDBOXED_JS_FOR_SERVER___
 
@@ -64,10 +62,82 @@ const llmBots = [
 
 for (let i = 0; i < llmBots.length; i++) {
   if (uaLower.indexOf(llmBots[i]) !== -1) {
-    logToConsole('Result: TRUE (Match met LLM bot: ' + llmBots[i] + ')');
+    logToConsole('Resultaat: TRUE (Match met LLM bot: ' + llmBots[i] + ')');
     return true; 
   }
 }
 
-logToConsole('Result: FALSE (No LLM match found)');
+logToConsole('Resukt: FALSE (No LLM match found)');
 return false;
+
+
+___SERVER_PERMISSIONS___
+
+[
+  {
+    "instance": {
+      "key": {
+        "publicId": "read_request",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "requestAccess",
+          "value": {
+            "type": 1,
+            "string": "any"
+          }
+        },
+        {
+          "key": "headerAccess",
+          "value": {
+            "type": 1,
+            "string": "any"
+          }
+        },
+        {
+          "key": "queryParameterAccess",
+          "value": {
+            "type": 1,
+            "string": "any"
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "logging",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "environments",
+          "value": {
+            "type": 1,
+            "string": "debug"
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  }
+]
+
+
+___TESTS___
+
+scenarios: []
+
+
+___NOTES___
+
+Created on 5/4/2026, 1:53:16 PM
