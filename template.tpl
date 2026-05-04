@@ -7,7 +7,6 @@ ___INFO___
   "securityGroups": [],
   "displayName": "LLM Checker - TAGGRS",
   "description": "Get visibility into traffic potentially originating from Large Language Models (LLMs) such as ChatGPT, Google Gemini, Perplexity AI, Microsoft Copilot, and Claude.",
-  "categories": ["ANALYTICS", "UTILITY", "DATA_WAREHOUSING", "EXPERIMENTATION"],
   "containerContexts": [
     "SERVER"
   ]
@@ -17,9 +16,18 @@ ___TEMPLATE_METADATA___
 
 {
   "metadataVersion": 1,
-  "termsOfService": true
+  "termsOfService": true,
+  "categories": [
+    "ANALYTICS",
+    "UTILITY",
+    "DATA_WAREHOUSING",
+    "EXPERIMENTATION"
+  ]
 }
 
+___TEMPLATE_PARAMETERS___
+
+[]
 
 ___SANDBOXED_JS_FOR_SERVER___
 
@@ -56,84 +64,10 @@ const llmBots = [
 
 for (let i = 0; i < llmBots.length; i++) {
   if (uaLower.indexOf(llmBots[i]) !== -1) {
-    logToConsole('Resultaat: TRUE (Match met LLM bot: ' + llmBots[i] + ')');
+    logToConsole('Result: TRUE (Match met LLM bot: ' + llmBots[i] + ')');
     return true; 
   }
 }
 
-logToConsole('Resukt: FALSE (No LLM match found)');
+logToConsole('Result: FALSE (No LLM match found)');
 return false;
-
-
-___SERVER_PERMISSIONS___
-
-[
-  {
-    "instance": {
-      "key": {
-        "publicId": "read_request",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "requestAccess",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        },
-        {
-          "key": "headerAccess",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        },
-        {
-          "key": "queryParameterAccess",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        }
-      ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
-    },
-    "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "logging",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "environments",
-          "value": {
-            "type": 1,
-            "string": "debug"
-          }
-        }
-      ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
-    },
-    "isRequired": true
-  }
-]
-
-
-___TESTS___
-
-scenarios: []
-
-
-___NOTES___
-
-Created on 4/7/2026, 9:50:38 AM
-
-
